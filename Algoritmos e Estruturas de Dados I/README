@@ -1,0 +1,88 @@
+Professor: Vinicius Von Glehn de Filippo
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Os objetivos principais desta disciplina são:
+
+Desenvolver habilidades em expressar soluções algorítmicas e mediante uso de estruturas de dados.
+Desenvolver habilidades em discernir e escolher representações de informações.
+Desenvolver habilidades em operar diferentes representações de dados.
+Exercitar o emprego de técnicas elementares para a construção e a documentação de programas.
+Introduzir o uso de uma linguagem de programação.
+Desenvolver a expressão de soluções algorítmicas em uma linguagem de programação.Desenvolver habilidades em expressar soluções algorítmicas e mediante uso de estruturas de dados.
+Desenvolver habilidades em discernir e escolher representações de informações.
+Desenvolver habilidades em operar diferentes representações de dados.
+Exercitar o emprego de técnicas elementares para a construção e a documentação de programas.
+Introduzir o uso de uma linguagem de programação.
+Desenvolver a expressão de soluções algorítmicas em uma linguagem de programação.
+levar o aluno a desenvolver programas utilizando plataformas de programação.
+Incentivar a criação de programas identificando além dos elementos fundamentais dos algoritmos, as estruturas de dados primitivos e agrupados, modularização, armazenamento de informações em arquivos e visualização gráfica de dados.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+O curso foi proposto para conter as seguintes unidades de ensino com seus respectivos conteúdos que serão devidamente adaptados conforme o andamento e especificidadades de cada turma.
+
+UNIDADE I - Apresentação da disciplina
+
+ Introdução a algoritmos e estruturas de dados
+
+Aplicações de algoritmos
+
+Modelos, notações e representações
+
+Noções de linguagens de programação
+
+Conceitos e utilizações
+
+Representação de dados
+
+Boas práticas: noções de documentação, contagem de operações e metodologia para desenvolvimento e testes
+ 
+
+UNIDADE II - Operações sobre Dados e Estruturas de Controle
+
+Armazenamento, constantes e variáveis
+
+Transferências, atribuições, entradas e saídas
+
+Manipulações, conversões, operações (aritméticas, lógicas, relacionais e literais) e operadores
+
+Estruturas de controle:
+
+Estrutura sequencial
+Estruturas condicionais: simples, composta e múltipla
+Estruturas de repetição: teste no início, final e com variável de controle
+ 
+
+UNIDADE III - Abstrações de Controle
+
+Noções de modularização
+
+Funções e procedimentos
+
+Noções de endereçamento e alocação de memória
+
+Passagem de parâmetros por valor e por referência
+
+Recursividade
+ 
+
+UNIDADE IV – Abstrações de Dados Homogêneos
+
+Arranjos: tabelas, vetores e matrizes
+
+Definições e acessos
+
+ 
+
+UNIDADE V - Abstrações de Dados Heterogêneos
+
+Noções sobre estruturas
+
+Noções sobre classes e orientação ao uso de objetos
+
+Definições e acessos
+Encapsulamento e herança
+Tratamento de exceções
+Noções sobre armazenamento de dados heterogêneos em memória secundária
