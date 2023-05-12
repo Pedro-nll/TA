@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamburgueria Abc</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header class="bg-body-secondary">
+      <!--GRID HEADER-->
+      <div class="container-fluid">
+        <div class="row">
+          <!--LOGO-->
+          <div class="col-lg-1 col-md-3 col-sm-3">
+            <img src="logo.png" alt="Logo" class="img-fluid" />
+          </div>
+          <!--Welcome guest + search bar-->
+          <div class="col-sm-3">
+            <div class="row">
+              <p>Welcome Guest!</p>
+            </div>
+            <div class="row">
+              <nav class="navbar">
+                <div class="container-fluid">
+                  <form class="d-flex" role="search">
+                    <input
+                      class="form-control me-2"
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search"
+                    />
+                    <button class="btn btn-outline-success" type="submit">
+                      Search
+                    </button>
+                  </form>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <!--Espaço para Navbar + info + carrinho-->
+          <div class="col-3">
+            <!--Navbar-->
+            <div class="row">
+              <nav class="navbar navbar-expand-lg">
+                <!--CONTEUDO DO NAVBAR-->
+                <div class="container-fluid">
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-link" href="#">Sign in</a>
+                      <a class="nav-link" href="#">Register</a>
+                      <a class="nav-link" href="#">My account</a>
+                      <a class="nav-link" href="#">Track order</a>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <!--Info + carrinho-->
+            <div class="row align-items-start">
+              <div class="container-fluid position-relative">
+                <div class="row">
+                  <!--info-->
+                  <div class="col-md-8">
+                    <div class="row">
+                      <p class="w-100">
+                        Cash on Delivery | 30 Day Return <br />
+                        24/7 Customer Service 1800 00 11 22
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Carrinho-->
+          <div class="col-md-1 col-sm-3">
+            <div class="d-flex justify-content-end align-items-center h-100">
+              <button
+                class="btn"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling"
+              >
+                <img src="Carrinho.png" alt="Seu carrinho" class="img-fluid" />
+              </button>
+              <div
+                class="offcanvas offcanvas-start bottom-0"
+                data-bs-theme="dark"
+                data-bs-scroll="true"
+                data-bs-backdrop="false"
+                tabindex="-1"
+                id="offcanvasScrolling"
+                aria-labelledby="offcanvasScrollingLabel"
+              >
+                <div class="offcanvas-header">
+                  <h1 class="offcanvas-title" id="offcanvasScrollingLabel">
+                    Seu carrinho
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="offcanvas-body">
+                  <p>Produtos:</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <!--Quick find-->
+          <div class="col-md-3 m-3 bg-dark-subtle border border-dark">
+            <form class="form-area">
+              <h3>Quick find - Choose product</h3>
+              <p>Find The right product at the right price</p>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Type"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Brand"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <input
+                  type="Email"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Category"
+                />
+              </div>
+              <div class="form-group input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="From"
+                />
+              </div>
+              <div class="form-group input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="To"
+                />
+              </div>
+              <div class="form-group row">
+                <div class="col-8 mx-auto">
+                  <button type="submit" class="btn btn-dark btn-block w-100">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Carousel-->
+          <div class="col-8 m-3">
+            <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="coca ks.jpg"
+                    class="d-block w-100 img-fluid"
+                    alt="Coca KS"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="pepsi KS.jpg"
+                    class="d-block w-100 img-fluid"
+                    alt="Pepsi KS"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="Guarana-Antartica.webp"
+                    class="d-block w-100 img-fluid"
+                    alt="Guarana"
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <!--Cards + most reviewed-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card01.png"
+                        class="card-img-top"
+                        alt="Cheese Burger"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">Pão, hambúrger 120g e muçarela</p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$12</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card02.png"
+                        class="card-img-top"
+                        alt="American"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger 120g, muçarela, alface, tomate e picles
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$13</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card03.png"
+                        class="card-img-top"
+                        alt="Egg"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger 120g, muçarela, ovo frito, alface,
+                          tomate e picles
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$14</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card04.png"
+                        class="card-img-top"
+                        alt="Bacon"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger 120g, muçarela, bacon, alface, tomate e
+                          picles
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$18</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card05.png"
+                        class="card-img-top"
+                        alt="Calabresa"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger 120g, muçarela, calabresa, alface,
+                          tomate e picles
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$17</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card06.png"
+                        class="card-img-top"
+                        alt="Chicken"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger de frango 130g, muçarela, alface e
+                          tomate
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$15</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card07.png"
+                        class="card-img-top"
+                        alt="Vegetariano"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger de soja 130g, muçarela, alface, tomate,
+                          picles e molho barbecue
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$15</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card08.png"
+                        class="card-img-top"
+                        alt="Costela"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger de costela 160g, muçarela, alface,
+                          tomate, picles e molho barbecue
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$16</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card" style="width: 18rem">
+                      <img
+                        src="foto cards/card09.png"
+                        class="card-img-top"
+                        alt="Ipa"
+                      />
+                      <div class="card-body">
+                        <p class="card-text">
+                          Pão, hambúrger de costela 160g(marinado na cerveja
+                          ipa), muçarela, alface, tomate, picles e molho
+                          barbecue
+                        </p>
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i>
+                        <br />
+                        <b>$22</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Most reviewed-->
+              
+              <div class="col-lg-3 mt-0 m-3 bg-dark-subtle border border-dark h-75">
+                <h4>Most reviewed items</h4>
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img
+                        src="foto cards/card04.png"
+                        class="img-fluid rounded-start"
+                        alt="Top 1"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Bacon</h5>
+                        <p class="card-text"><b>$18</b></p>
+                        <p class="card-text lh-1">
+                          <small class="text-body-secondary"
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                          ></small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img
+                        src="foto cards/card09.png"
+                        class="img-fluid rounded-start"
+                        alt="Top 2"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Ipa</h5>
+                        <p class="card-text"><b>$22</b></p>
+                        <p class="card-text lh-1">
+                          <small class="text-body-secondary"
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                          ></small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img
+                        src="foto cards/card06.png"
+                        class="img-fluid rounded-start"
+                        alt="Top 3"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Chicken</h5>
+                        <p class="card-text"><b>$15</b></p>
+                        <p class="card-text lh-1">
+                          <small class="text-body-secondary"
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                          ></small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img
+                        src="foto cards/card03.png"
+                        class="img-fluid rounded-start"
+                        alt="Top 4"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Egg</h5>
+                        <p class="card-text"><b>$14</b></p>
+                        <p class="card-text lh-1">
+                          <small class="text-body-secondary"
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                          ></small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img
+                        src="foto cards/card01.png"
+                        class="img-fluid rounded-start"
+                        alt="Top 4"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Cheese Burger</h5>
+                        <p class="card-text"><b>$12</b></p>
+                        <p class="card-text lh-1">
+                          <small class="text-body-secondary"
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                            ><i class="bi bi-star-fill"></i
+                          ></small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg bg-body-secondary border border-dark p-2 m-1">
+                        <h4>Newsletter</h4>
+                        <p>sign up for the newsletter!</p>
+                        <form>
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Join now</button>
+                          </form>
+                </div>
+                </div>
+                    
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container-fluid w-100 p-0">
+        <div class="row bg-body-secondary w-100 m-0">
+          <div class="col-md-3 fs-4">
+            <h5>Payment Methods</h5>
+            <a href="#"><i class="bi bi-credit-card"></i></a>
+            <a href="#"><i class="bi bi-credit-card-2-back"></i></a>
+            <a href="#"><i class="bi bi-credit-card-2-back-fill"></i></a><br>
+            <a href="#"><i class="bi bi-credit-card-2-front"></i></a>
+            <a href="#"><i class="bi bi-paypal"></i></a><br>
+            <div class="fs-1">
+            <a href="#"><i class="bi bi-currency-bitcoin"></i></i></a>
+            <a href="#"><i class="bi bi-cash-coin"></i></a>
+        </div>
+        </div>
+          <div class="col-md-3 lh-1">
+            <h5>Quick Links</h5>
+            <p><a href="#">Help</a></p>
+            <p><a href="#">Shipping Policy</a></p>
+            <p><a href="#">Cancelation & Returns</a></p>
+            <p><a href="#">FAQ</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Disclaimer</a></p>
+          </div>
+          <div class="col-md-3 fs-2">
+            <h5>Lets be social</h5>
+            <a href="https://pt-br.facebook.com"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/home"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com/?hl=en"><i class="bi bi-instagram"></i></a>
+          </div>
+          <div class="col-md-3 lh-1">
+            <h5>Contact us</h5>
+            <p>Alameda A</p>
+            <p>Bairro B</p>
+            <p>999</p>
+            <i class="bi bi-envelope"></i>
+            <span>Email@email.com.br</span>
+            <br />
+            <i class="bi bi-telephone"></i>
+            <span>31 9 1234-5678</span>
+          </div>
+        </div>
+        <div class="row bg-dark-subtle p-0 m-0 text-center">
+          <p class="ms-auto">2007-2014 company.com.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
