@@ -6,3 +6,11 @@
     height: 200px;
     object-fit: cover;
   }
+  .tamanho-carrinho{
+    width: 100px;
+    height: auto;
+  }
+  .tamanho-logo{
+    width: 150px;
+    height: auto;
+  }
