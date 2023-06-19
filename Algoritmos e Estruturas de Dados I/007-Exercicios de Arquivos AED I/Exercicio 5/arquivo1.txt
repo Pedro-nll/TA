@@ -1,0 +1,3 @@
+Engenharia de software e uma area da engenharia e da computacao voltada a especificacao, desenvolvimento, 
+manutencao e criacao de software, com a aplicacao de tecnologias e praticas de gerencia de projetos e outras disciplinas, 
+visando organizacao, produtividade e qualidade.

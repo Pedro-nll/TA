@@ -1,0 +1,6 @@
+Aluno de matricula: 0001  - telefone: 998288251
+Aluno de matricula: 0002  - telefone: 996163232
+Aluno de matricula: 0004 - telefone: 996168251
+Aluno de matricula: 0005 - telefone: 323545211
+Aluno de matricula: 0010 - telefone: 265435329
+Aluno de matricula: 0100 - telefone: 995618251
