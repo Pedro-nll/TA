@@ -1,0 +1,10 @@
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
+cpf: | nome: | endereco: | telefone: | numero da passagem: | numero da poltrona: | numero do voo: | horario: 
