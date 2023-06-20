@@ -1,0 +1,69 @@
+Sprint 1:
+Definição do backlog do produto - vc
+historias de usuario - vc
+menu inicial - eu
+menu voo - eu
+casos de teste menus - vc
+banco de dados BHRIO - vc
+banco de dados BHSP - eu
+banco de dados BHBRASILIA - eu
+
+sprint 2-
+documentação funções menu
+função para carregar os dados dos bancos de dados - eu
+Mostrar lista completa dos passageiros de determinado voo
+
+TESTES:
+função menu inicial:
+    input: 1 -> chamar função do menu voo BHRIO
+    input: 2 -> chamar função do menu voo BHSP
+    input: 3 -> chamar função do menu voo BHBRASILIA
+    input: Int diferente de 1,2,3 -> print "voo invalido"
+    input: input sem ser um inteiro -> print valor invalido
+função menu de voos:
+    recebendo: 1 -> mostrar menu voo BHRIO
+    recebendo: 2 -> mostrar menu voo BHSP
+    recebendo: 3 -> mostrar menu voo BHBRASILIA
+    input: input sem ser um inteiro -> print valor invalido
+    input: Int diferente de 1,2,3,4,5,6,9 -> print "opção invalida"
+    input: 9 -> voltar para o menu inicial
+função carregar banco de dados BHRIO:
+    printf("%d", listaDePassageirosBHRIO[i].cpf) no main tem que retornar os numeros de 1 a 15
+    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
+função carregar banco de dados BHSP:
+    printf("%d", listaDePassageirosBHSP[i].cpf) no main tem que retornar os numeros de 1 a 15
+    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
+função carregar banco de dados BHRIO:
+    printf("%d", listaDePassageirosBHRIO[i].cpf) no main tem que retornar os numeros de 1 a 15
+    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
+
+Erros encontrados e corrigidos:
+    -Quando o input numerico das funções menuInicial e menuVoos recebia um texto não numerico o programa entrava em loop infinito
+        -Correção:
+            foi implementada a função sscanf() para tentar converter o input do usuario de texto para numero e se falhar o loop de leitura se mantem. 
+            A função passou nos testes subsequentes
+
+    -As funções de carregar banco de dados estavam salvando incorretamente o atributo "cpf" de cada passageiro, salvando o endereço em conjunto com o cpf
+        -Correção:
+            O erro foi encontrado na função fscanf() de cada função de leitura dos bancos, a qual não encontrava o separador de campos no banco de dados
+            A leitura da função foi corrigida e passou nos testes subsequentes.
+
+printf("PASSAGEIROS BHRIO:\n");
+for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
+        printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
+                i+1, passageirosBHRIO[i].id, passageirosBHRIO[i].nome, passageirosBHRIO[i].cpf, passageirosBHRIO[i].endereco, passageirosBHRIO[i].telefone, passageirosBHRIO[i].numeroPassagem,
+                passageirosBHRIO[i].numeroPoltrona, passageirosBHRIO[i].numeroVoo, passageirosBHRIO[i].horarioVoo );
+}
+printf("----------------------------------------\nPASSAGEIROS BHSP:\n");
+printf("BH SP\n");
+for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
+        printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
+                i+1, passageirosBHSP[i].id, passageirosBHSP[i].nome, passageirosBHSP[i].cpf, passageirosBHSP[i].endereco, passageirosBHSP[i].telefone, passageirosBHSP[i].numeroPassagem,
+                passageirosBHSP[i].numeroPoltrona, passageirosBHSP[i].numeroVoo, passageirosBHSP[i].horarioVoo );
+}
+printf("----------------------------------------\nPASSAGEIROS BHBRASILIA:\n");
+for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
+            printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
+                i+1, passageirosBHBRASILIA[i].id, passageirosBHBRASILIA[i].nome, passageirosBHBRASILIA[i].cpf, passageirosBHBRASILIA[i].endereco, passageirosBHBRASILIA[i].telefone, passageirosBHBRASILIA[i].numeroPassagem,
+                passageirosBHBRASILIA[i].numeroPoltrona, passageirosBHBRASILIA[i].numeroVoo, passageirosBHBRASILIA[i].horarioVoo );
+}
