@@ -10,8 +10,13 @@ banco de dados BHBRASILIA - eu
 
 sprint 2-
 documentação funções menu
-função para carregar os dados dos bancos de dados - eu
+função para carregar o dados dos bancos de dados BHRIO - eu
+função para carregar o dados dos bancos de dados BHSP - vc
+função para carregar o dados dos bancos de dados BHBRASILIA - eu
 Mostrar lista completa dos passageiros de determinado voo
+
+Sprint 3-
+refatoração das funções de carregar banco de dados - eu
 
 TESTES:
 função menu inicial:
@@ -27,15 +32,9 @@ função menu de voos:
     input: input sem ser um inteiro -> print valor invalido
     input: Int diferente de 1,2,3,4,5,6,9 -> print "opção invalida"
     input: 9 -> voltar para o menu inicial
-função carregar banco de dados BHRIO:
-    printf("%d", listaDePassageirosBHRIO[i].cpf) no main tem que retornar os numeros de 1 a 15
-    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
-função carregar banco de dados BHSP:
-    printf("%d", listaDePassageirosBHSP[i].cpf) no main tem que retornar os numeros de 1 a 15
-    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
-função carregar banco de dados BHRIO:
-    printf("%d", listaDePassageirosBHRIO[i].cpf) no main tem que retornar os numeros de 1 a 15
-    O mesmo comportamento deve ser encontrado ao trocar o atributo desejado, retornando os valores corretos e atualizados com o BD.
+função carregar banco de dados do voo selecionado:
+    Ao escolher um voo no menu inicial a mensagem "Carregando banco de dados..." tem que refletir a escolha do voo
+    Deve ser possivel acessar os dados da lista de passageiros, para testar isso um printf("%d", listaDePassageiros[0].id) tem que printar o numero "1"
 
 Erros encontrados e corrigidos:
     -Quando o input numerico das funções menuInicial e menuVoos recebia um texto não numerico o programa entrava em loop infinito
@@ -47,23 +46,6 @@ Erros encontrados e corrigidos:
         -Correção:
             O erro foi encontrado na função fscanf() de cada função de leitura dos bancos, a qual não encontrava o separador de campos no banco de dados
             A leitura da função foi corrigida e passou nos testes subsequentes.
-
-printf("PASSAGEIROS BHRIO:\n");
-for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
-        printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
-                i+1, passageirosBHRIO[i].id, passageirosBHRIO[i].nome, passageirosBHRIO[i].cpf, passageirosBHRIO[i].endereco, passageirosBHRIO[i].telefone, passageirosBHRIO[i].numeroPassagem,
-                passageirosBHRIO[i].numeroPoltrona, passageirosBHRIO[i].numeroVoo, passageirosBHRIO[i].horarioVoo );
-}
-printf("----------------------------------------\nPASSAGEIROS BHSP:\n");
-printf("BH SP\n");
-for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
-        printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
-                i+1, passageirosBHSP[i].id, passageirosBHSP[i].nome, passageirosBHSP[i].cpf, passageirosBHSP[i].endereco, passageirosBHSP[i].telefone, passageirosBHSP[i].numeroPassagem,
-                passageirosBHSP[i].numeroPoltrona, passageirosBHSP[i].numeroVoo, passageirosBHSP[i].horarioVoo );
-}
-printf("----------------------------------------\nPASSAGEIROS BHBRASILIA:\n");
-for(int i = 0; i<MAXIMODEPASSAGEIROS; i++){
-            printf("Passageiro %d - id:%d\n | nome: %s | cpf: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario do voo: %s\n",
-                i+1, passageirosBHBRASILIA[i].id, passageirosBHBRASILIA[i].nome, passageirosBHBRASILIA[i].cpf, passageirosBHBRASILIA[i].endereco, passageirosBHBRASILIA[i].telefone, passageirosBHBRASILIA[i].numeroPassagem,
-                passageirosBHBRASILIA[i].numeroPoltrona, passageirosBHBRASILIA[i].numeroVoo, passageirosBHBRASILIA[i].horarioVoo );
-}
+    -Quando o voo tinha menos que 15 passageiros a função para mostrar a lista de passageiros completava a quantidade de passageiros com lixo.
+        -Correção:
+            Foi adicionado um contador de passageiros na função de carregar banco de dados e essa variavel foi adicionada a chamada da função de mostrar a lista.

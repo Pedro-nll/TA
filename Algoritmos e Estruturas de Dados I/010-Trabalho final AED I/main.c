@@ -16,24 +16,14 @@ typedef struct Passageiro{
     char horarioVoo[5];
 }Passageiro;
 
-int carregaBancoDeDadosBHRIO(Passageiro *passageirosBHRIO, int tamanhoArray);
-int carregaBancoDeDadosBHSP(Passageiro *passageirosBHSP, int tamanhoArray);
-int carregaBancoDeDadosBHBRASILIA(Passageiro *passageirosBHBRASILIA, int tamanhoArray);
+int carregaBancoDeDadosDoVooSelecionado(int vooSelecionado,Passageiro *listaDePassageiros, int quantidadeDePassageiros);
 int menuInicial();
 int menuVoos(int vooSelecionado);
+int mostarListaDePassageiros(Passageiro *listaDePassageiros, int quantidadeDePassageiros);
 
 
 int main()
 {
-    Passageiro passageirosBHRIO[MAXIMODEPASSAGEIROS];
-    carregaBancoDeDadosBHRIO(passageirosBHRIO, MAXIMODEPASSAGEIROS);
-
-    Passageiro passageirosBHSP[MAXIMODEPASSAGEIROS];
-    carregaBancoDeDadosBHSP(passageirosBHSP, MAXIMODEPASSAGEIROS);
-
-    Passageiro passageirosBHBRASILIA[MAXIMODEPASSAGEIROS];
-    carregaBancoDeDadosBHBRASILIA(passageirosBHBRASILIA, MAXIMODEPASSAGEIROS);
-
     menuInicial();
     return 0;
 }
@@ -84,6 +74,9 @@ int menuInicial() {
 
 
 int menuVoos(int vooSelecionado){
+    Passageiro listaDePassageiros[MAXIMODEPASSAGEIROS];
+    int quantidadeDePassageiros = carregaBancoDeDadosDoVooSelecionado(vooSelecionado,listaDePassageiros,quantidadeDePassageiros);
+
     char voos[][20] = {"VOO BH-RIO", "VOO BH-SP", "VOO BH-BRASILIA"};
     int opcaoMenu;
     printf("---------- EMPRESA AEREA QUEDA LIVRE - %s ----------\n", voos[vooSelecionado-1]);
@@ -102,6 +95,11 @@ int menuVoos(int vooSelecionado){
     }while(sscanf(input, "%d", &opcaoMenu) != 1);
 
     switch(opcaoMenu){
+        case 1:{
+            mostarListaDePassageiros(listaDePassageiros, quantidadeDePassageiros);
+            menuVoos(vooSelecionado);
+            break;
+        }
         case 9:{
             menuInicial();
             return 0;
@@ -114,78 +112,65 @@ int menuVoos(int vooSelecionado){
     return 0;
 }
 
-int carregaBancoDeDadosBHRIO(Passageiro *passageirosBHRIO, int tamanhoArray) {
-    FILE *BDbhrj = fopen("BHRIO.txt", "r");
+int carregaBancoDeDadosDoVooSelecionado(int vooSelecionado, Passageiro *listaDePassageiros, int quantidadeDePassageiros) {
+    FILE *bancoDeDados;
+    switch (vooSelecionado) {
+        case 1: {
+            bancoDeDados = fopen("BHRIO.txt", "r");
+            printf("CARREGANDO DADOS DO VOO BHRIO...\n");
+            break;
+        }
+        case 2: {
+            bancoDeDados = fopen("BHSP.txt", "r");
+            printf("CARREGANDO DADOS DO VOO BHSP...\n");
+            break;
+        }
+        case 3: {
+            bancoDeDados = fopen("BHBRASILIA.txt", "r");
+            printf("CARREGANDO DADOS DO VOO BHBRASILIA...\n");
+            break;
+        }
+        default: {
+            printf("Nao foi possivel carregar o banco de dados do voo selecionado.\n");
+            return 1;
+        }
+    }
 
-    if (BDbhrj == NULL) {
-        printf("Nao foi possivel carregar os dados do voo BHRIO.");
+    if (bancoDeDados == NULL) {
+        printf("Nao foi possivel carregar os dados do voo.\n");
         return 1;
     }
-    for(int i = 0; i < tamanhoArray;i++){
-        fscanf(BDbhrj, "id: %d | cpf: %14[^|] | nome: %99[^|] | endereco: %199[^|] | telefone: %14[^|] | numero da passagem: %99[^|] | numero da poltrona: %d | numero do voo: %d | horario: %5[^\n]\n",
-            &passageirosBHRIO[i].id,
-            &passageirosBHRIO[i].cpf,
-            &passageirosBHRIO[i].nome,
-            &passageirosBHRIO[i].endereco,
-            &passageirosBHRIO[i].telefone,
-            &passageirosBHRIO[i].numeroPassagem,
-            &passageirosBHRIO[i].numeroPoltrona,
-            &passageirosBHRIO[i].numeroVoo,
-            &passageirosBHRIO[i].horarioVoo);
 
+    quantidadeDePassageiros = 0;
+
+    for (int i = 0; i < MAXIMODEPASSAGEIROS; i++) {
+        int result = fscanf(bancoDeDados, "id: %d | cpf: %14[^|] | nome: %99[^|] | endereco: %199[^|] | telefone: %14[^|] | numero da passagem: %99[^|] | numero da poltrona: %d | numero do voo: %d | horario: %5[^\n]\n",
+            &listaDePassageiros[i].id,
+            &listaDePassageiros[i].cpf,
+            &listaDePassageiros[i].nome,
+            &listaDePassageiros[i].endereco,
+            &listaDePassageiros[i].telefone,
+            &listaDePassageiros[i].numeroPassagem,
+            &listaDePassageiros[i].numeroPoltrona,
+            &listaDePassageiros[i].numeroVoo,
+            &listaDePassageiros[i].horarioVoo);
+
+        if (result == EOF) {
+            break;
+        }
+
+        quantidadeDePassageiros++;
     }
 
-    fclose(BDbhrj);
-    return 0;
+    fclose(bancoDeDados);
+    return quantidadeDePassageiros;
 }
 
-int carregaBancoDeDadosBHSP(Passageiro *passageirosBHSP, int tamanhoArray) {
-    FILE *BDbhsp = fopen("BHSP.txt", "r");
 
-    if (BDbhsp == NULL) {
-        printf("Nao foi possivel carregar os dados do voo BHSP.");
-        return 1;
+int mostarListaDePassageiros(Passageiro *listaDePassageiros, int quantidadeDePassageiros){
+    for(int i = 0; i<quantidadeDePassageiros; i++){
+        printf("Passageiro %d - Nome: %s | cpf: %s | numero da passagem: %d | numero da poltrona: %d\n",
+            i+1, listaDePassageiros[i].nome, listaDePassageiros[i].cpf, listaDePassageiros[i].numeroPassagem, listaDePassageiros[i].numeroPoltrona);
     }
-    for(int i = 0; i < tamanhoArray;i++){
-        fscanf(BDbhsp, "id: %d | cpf: %14[^|] | nome: %99[^|] | endereco: %199[^|] | telefone: %14[^|] | numero da passagem: %99[^|] | numero da poltrona: %d | numero do voo: %d | horario: %5[^\n]\n",
-            &passageirosBHSP[i].id,
-            &passageirosBHSP[i].cpf,
-            &passageirosBHSP[i].nome,
-            &passageirosBHSP[i].endereco,
-            &passageirosBHSP[i].telefone,
-            &passageirosBHSP[i].numeroPassagem,
-            &passageirosBHSP[i].numeroPoltrona,
-            &passageirosBHSP[i].numeroVoo,
-            &passageirosBHSP[i].horarioVoo);
-
-    }
-
-    fclose(BDbhsp);
     return 0;
 }
-
-int carregaBancoDeDadosBHBRASILIA(Passageiro *passageirosBHBRASILIA, int tamanhoArray){
-    FILE *BDbhbrasilia = fopen("BHBRASILIA.txt", "r");
-
-    if (BDbhbrasilia == NULL) {
-        printf("Nao foi possivel carregar os dados do voo BHBRASILIA.");
-        return 1;
-    }
-    for(int i = 0; i < tamanhoArray;i++){
-        fscanf(BDbhbrasilia, "id: %d | cpf: %14[^|] | nome: %99[^|] | endereco: %199[^|] | telefone: %14[^|] | numero da passagem: %99[^|] | numero da poltrona: %d | numero do voo: %d | horario: %5[^\n]\n",
-            &passageirosBHBRASILIA[i].id,
-            &passageirosBHBRASILIA[i].cpf,
-            &passageirosBHBRASILIA[i].nome,
-            &passageirosBHBRASILIA[i].endereco,
-            &passageirosBHBRASILIA[i].telefone,
-            &passageirosBHBRASILIA[i].numeroPassagem,
-            &passageirosBHBRASILIA[i].numeroPoltrona,
-            &passageirosBHBRASILIA[i].numeroVoo,
-            &passageirosBHBRASILIA[i].horarioVoo);
-
-    }
-
-    fclose(BDbhbrasilia);
-    return 0;
-}
-
