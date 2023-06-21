@@ -13,10 +13,13 @@ documentação funções menu
 função para carregar o dados dos bancos de dados BHRIO - eu
 função para carregar o dados dos bancos de dados BHSP - vc
 função para carregar o dados dos bancos de dados BHBRASILIA - eu
-Mostrar lista completa dos passageiros de determinado voo
+Mostrar lista completa dos passageiros de determinado voo - eu
+buscar passageiro pelo nome - eu
 
 Sprint 3-
 refatoração das funções de carregar banco de dados - eu
+buscar passageiro por CPF - vc
+Mostrar lista de espera - eu
 
 TESTES:
 função menu inicial:
@@ -35,6 +38,23 @@ função menu de voos:
 função carregar banco de dados do voo selecionado:
     Ao escolher um voo no menu inicial a mensagem "Carregando banco de dados..." tem que refletir a escolha do voo
     Deve ser possivel acessar os dados da lista de passageiros, para testar isso um printf("%d", listaDePassageiros[0].id) tem que printar o numero "1"
+função mostrar lista de passageiros:
+    recebendo: 1 -> mostrar mostrar todos os passageiros cadastrados no arquivo txt do voo BHRIO
+    recebendo: 2 -> mostrar mostrar todos os passageiros cadastrados no arquivo txt do voo BHSP
+    recebendo: 3 -> mostrar mostrar todos os passageiros cadastrados no arquivo txt do voo BHBRASILIA
+função buscar passageiro por nome:
+    Abrir arquivo txt de algum voo -> escolher um nome dentro do arquivo -> Rodar o programa -> Colocar no primeiro input o numero do voo ->
+        colocar no segundo input "3"-> Colocar como input o nome escolhido -> Conferir se os dados exibidos refletem os dados cadastrados
+função buscar passageiro por cpf:
+    Abrir arquivo txt de algum voo -> escolher um cpf dentro do arquivo -> Rodar o programa -> Colocar no primeiro input o numero do voo ->
+        colocar no segundo input "2"-> Colocar como input o cpf escolhido -> Conferir se os dados exibidos refletem os dados cadastrados
+Função mostrar lista de espera:
+    recebendo: 1 -> Conferir a quantidade de passageiros cadastrados no voo BHRIO -> Caso tenham 10 ou menos a função deve imprimir "Esse voo esta sem lista de espera."
+        Caso tenha mais de 10 a função deve mostrar os dados de cada passageiro na lista
+    recebendo: 2 -> Conferir a quantidade de passageiros cadastrados no voo BHSP -> Caso tenham 10 ou menos a função deve imprimir "Esse voo esta sem lista de espera."
+        Caso tenha mais de 10 a função deve mostrar os dados de cada passageiro na lista
+    recebendo: 3 -> Conferir a quantidade de passageiros cadastrados no voo BHBRASILIA -> Caso tenham 10 ou menos a função deve imprimir "Esse voo esta sem lista de espera."
+        Caso tenha mais de 10 a função deve mostrar os dados de cada passageiro na lista
 
 Erros encontrados e corrigidos:
     -Quando o input numerico das funções menuInicial e menuVoos recebia um texto não numerico o programa entrava em loop infinito
