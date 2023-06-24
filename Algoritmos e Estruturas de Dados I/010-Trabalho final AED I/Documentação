@@ -20,6 +20,8 @@ Sprint 3-
 refatoração das funções de carregar banco de dados - eu
 buscar passageiro por CPF - vc
 Mostrar lista de espera - eu
+Cadastrar passageiro - eu
+Excluir passageiro - eu
 
 TESTES:
 função menu inicial:
