@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
+
 #define MAXIMODEPASSAGEIROS 15
 #define TAMANHO_CPF 15
 
@@ -176,7 +177,7 @@ int carregaBancoDeDadosDoVooSelecionado(int vooSelecionado, Passageiro *listaDeP
     int quantidadeDePassageiros = 0;
 
     for (int i = 0; i < MAXIMODEPASSAGEIROS; i++) {
-        int result = fscanf(bancoDeDados, "id: %d | cpf: %14[^|] | nome: %99[^|] | endereco: %199[^|] | telefone: %14[^|] | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario: %5[^\n]\n",
+        int result = fscanf(bancoDeDados, "id: %d| cpf: %14[^|]| nome: %99[^|]| endereco: %199[^|]| telefone: %14[^|]| numero da passagem: %d| numero da poltrona: %d| numero do voo: %d| horario: %5[^\n]\n",
             &listaDePassageiros[i].id,
             &listaDePassageiros[i].cpf,
             &listaDePassageiros[i].nome,
@@ -216,12 +217,14 @@ int buscarPassageiroPorNome(Passageiro *listaDePassageiros, int quantidadeDePass
     int passageiroNoVoo = 0;
     for(int i = 0; inputNome[i]; i++){
       inputNome[i] = tolower(inputNome[i]);
+      if(inputNome[i] == ' ')inputNome[i] = '\0';
     }
     char passageiroAtual[100];
     for(int i = 0; i<quantidadeDePassageiros; i++){
         strcpy(passageiroAtual, listaDePassageiros[i].nome);
         for(int i = 0; passageiroAtual[i]; i++){
           passageiroAtual[i] = tolower(passageiroAtual[i]);
+          if(passageiroAtual[i] == ' ')passageiroAtual[i] = '\0';
         }
         if(strcmp(passageiroAtual, inputNome) == 0){
             printf("Passageiro: %s - CPF: %s - Telefone: %s - Numero da passagem: %d - Numero da poltrona: %d - Numero do voo: %d - Horario do voo: %s\n",
@@ -242,15 +245,36 @@ int buscarPassageiroPorNome(Passageiro *listaDePassageiros, int quantidadeDePass
     return 0;
 }
 
-int buscarPassageiroPorCPF(Passageiro *listaDePassageiros, int quantidadeDePassageiros){
+int buscarPassageiroPorCPF(Passageiro *listaDePassageiros, int quantidadeDePassageiros) {
     char inputCPF[100];
     getchar();
     printf("Digite o CPF do passageiro: ");
-    scanf("%[^\n]",inputCPF);
+    scanf("%[^\n]", inputCPF);
     getchar();
+
+    char cpfSemCaracteresEspeciais[100];
+    int j = 0;
+    for (int i = 0; inputCPF[i]; i++) {
+        if (isdigit(inputCPF[i])) {
+            cpfSemCaracteresEspeciais[j] = inputCPF[i];
+            j++;
+        }
+    }
+    cpfSemCaracteresEspeciais[j] = '\0';
+
     int passageiroNoVoo = 0;
-    for(int i = 0; i<quantidadeDePassageiros; i++){
-        if(strcmp(listaDePassageiros[i].cpf, inputCPF) == 0){
+    for (int i = 0; i < quantidadeDePassageiros; i++) {
+        char passageiroAtualSemCaracteresEspeciais[100];
+        int k = 0;
+        for (int j = 0; listaDePassageiros[i].cpf[j]; j++) {
+            if (isdigit(listaDePassageiros[i].cpf[j])) {
+                passageiroAtualSemCaracteresEspeciais[k] = listaDePassageiros[i].cpf[j];
+                k++;
+            }
+        }
+        passageiroAtualSemCaracteresEspeciais[k] = '\0';
+
+        if (strcmp(passageiroAtualSemCaracteresEspeciais, cpfSemCaracteresEspeciais) == 0) {
             printf("Passageiro: %s - CPF: %s - Telefone: %s - Numero da passagem: %d - Numero da poltrona: %d - Numero do voo: %d - Horario do voo: %s\n",
                    listaDePassageiros[i].nome,
                    listaDePassageiros[i].cpf,
@@ -259,15 +283,18 @@ int buscarPassageiroPorCPF(Passageiro *listaDePassageiros, int quantidadeDePassa
                    listaDePassageiros[i].numeroPoltrona,
                    listaDePassageiros[i].numeroVoo,
                    listaDePassageiros[i].horarioVoo
-                   );
+            );
             passageiroNoVoo = 1;
         }
     }
-    if(passageiroNoVoo == 0){
+
+    if (passageiroNoVoo == 0) {
         printf("Passageiro nao consta neste voo.\n");
     }
+
     return 0;
 }
+
 
 int mostrarListaDeEspera(Passageiro *listaDePassageiros, int quantidadeDePassageiros){
     if(quantidadeDePassageiros<=10){
@@ -279,6 +306,34 @@ int mostrarListaDeEspera(Passageiro *listaDePassageiros, int quantidadeDePassage
         }
     }
     return 0;
+}
+
+int validarCPF(const char *cpf) {
+    int i;
+    int digitos[11];
+    int soma = 0;
+
+    // Verifica se o CPF possui 11 dígitos
+    if (strlen(cpf) != 14)
+        return 0;
+
+    if(cpf[3]!= '.')
+        return 0;
+
+    if(cpf[7]!= '.')
+        return 0;
+
+    if(cpf[11]!= '-')
+        return 0;
+
+    for(int i = 0; i<14; i++){
+        if(i==3)i++;
+        if(i==7)i++;
+        if(i==11)i++;
+        if (!(isdigit(cpf[i]))) return 0;
+    }
+
+    return 1;
 }
 
 int cadastrarPassageiro(Passageiro *listaDePassageiros, int *quantidadeDePassageiros, int vooSelecionado) {
@@ -329,15 +384,23 @@ int cadastrarPassageiro(Passageiro *listaDePassageiros, int *quantidadeDePassage
         printf("Digite o CPF do passageiro: ");
         scanf(" %[^\n]", input);
         getchar();
+
+        if (!validarCPF(input)) {
+            printf("CPF invalido. Digite o CPF no formato XXX.XXX.XXX-XX. Tente novamente.\n");
+            cpfValido = 0;
+        }
+
         for (int i = 0; i < *quantidadeDePassageiros - 1; i++) {
             if (strcmp(input, listaDePassageiros[i].cpf) == 0) {
-                printf("CPF invalido. Tente novamente:\n");
+                printf("CPF já cadastrado. Tente novamente.\n");
                 cpfValido = 0;
                 break;
             }
         }
-        if (cpfValido)
+
+        if (cpfValido) {
             strcpy(listaDePassageiros[*quantidadeDePassageiros].cpf, input);
+        }
     } while (!cpfValido);
 
     printf("Digite o endereco do passageiro: ");
@@ -354,7 +417,7 @@ int cadastrarPassageiro(Passageiro *listaDePassageiros, int *quantidadeDePassage
     listaDePassageiros[*quantidadeDePassageiros].numeroPassagem = ultimaPassagem+1;
     listaDePassageiros[*quantidadeDePassageiros].numeroPoltrona = ultimaPoltrona+1;
 
-    fprintf(bancoDeDados, "id: %d | cpf: %s| nome: %s| endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario: %s\n",
+    fprintf(bancoDeDados, "id: %d| cpf: %s| nome: %s| endereco: %s| telefone: %s| numero da passagem: %d| numero da poltrona: %d| numero do voo: %d| horario: %s\n",
             listaDePassageiros[*quantidadeDePassageiros].id,
             listaDePassageiros[*quantidadeDePassageiros].cpf,
             listaDePassageiros[*quantidadeDePassageiros].nome,
@@ -425,6 +488,9 @@ int excluirPassageiro(Passageiro listaDePassageiros[], int *quantidadeDePassagei
         listaDePassageiros[i] = listaDePassageiros[i + 1];
     }
 
+    if(indiceExcluir <= 9 && quantidadeDePassageiros > 10){
+        printf("%s saiu da lista de espera e entrou para o voo!\n", listaDePassageiros[9].nome);
+    }
     *quantidadeDePassageiros -= 1;
 
     fclose(bancoDeDados);
@@ -454,13 +520,13 @@ int excluirPassageiro(Passageiro listaDePassageiros[], int *quantidadeDePassagei
     }
 
     for (int i = 0; i < *quantidadeDePassageiros; i++) {
-        fprintf(bancoDeDados, "id: %d | cpf: %s | nome: %s | endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario: %s\n",
-                listaDePassageiros[i].id, listaDePassageiros[i].cpf, listaDePassageiros[i].nome, listaDePassageiros[i].endereco,
+        fprintf(bancoDeDados, "id: %d | cpf: %s| nome: %s| endereco: %s | telefone: %s | numero da passagem: %d | numero da poltrona: %d | numero do voo: %d | horario: %s\n",
+                i+1, listaDePassageiros[i].cpf, listaDePassageiros[i].nome, listaDePassageiros[i].endereco,
                 listaDePassageiros[i].telefone, listaDePassageiros[i].numeroPassagem, listaDePassageiros[i].numeroPoltrona,
                 listaDePassageiros[i].numeroVoo, listaDePassageiros[i].horarioVoo);
     }
 
     fclose(bancoDeDados2);
-    printf("Passageiro excluído com sucesso.\n");
+    printf("Passageiro excluido com sucesso.\n");
     return 0;
 }
