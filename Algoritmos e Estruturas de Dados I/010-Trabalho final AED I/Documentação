@@ -23,6 +23,11 @@ Mostrar lista de espera - eu
 Cadastrar passageiro - eu
 Excluir passageiro - eu
 
+sprint 4-
+correção de bugs - eu
+testes - eu + vc
+função de verificação de cpf - eu
+
 TESTES:
 função menu inicial:
     input: 1 -> chamar função do menu voo BHRIO
@@ -71,3 +76,9 @@ Erros encontrados e corrigidos:
     -Quando o voo tinha menos que 15 passageiros a função para mostrar a lista de passageiros completava a quantidade de passageiros com lixo.
         -Correção:
             Foi adicionado um contador de passageiros na função de carregar banco de dados e essa variavel foi adicionada a chamada da função de mostrar a lista.
+    -O usuario podia cadastrar um cpf em um formato diferente do esperado ou um cpf com texto nele.
+        -Correção:
+            Foi adicionada uma função que verifica primeiro a quantidade de digitos do cpf digitado, depois se os caracteres especiais de formatação estão presentes e por ultimo se foram digitados apenas numeros
+    -A busca por nome era "case-sensitive"
+        -Correção
+            Foi adicionada na função uma conversão de letra maiuscula para minuscula para padronizar o input e os nomes 

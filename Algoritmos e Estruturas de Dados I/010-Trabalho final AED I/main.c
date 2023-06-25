@@ -201,9 +201,17 @@ int carregaBancoDeDadosDoVooSelecionado(int vooSelecionado, Passageiro *listaDeP
 
 
 int mostrarListaDePassageiros(Passageiro *listaDePassageiros, int quantidadeDePassageiros){
-    for(int i = 0; i<quantidadeDePassageiros; i++){
-        printf("Passageiro %d - Nome: %s | cpf: %s | numero da passagem: %d | numero da poltrona: %d\n",
-            i+1, listaDePassageiros[i].nome, listaDePassageiros[i].cpf, listaDePassageiros[i].numeroPassagem, listaDePassageiros[i].numeroPoltrona);
+    if(quantidadeDePassageiros<=10){
+        for(int i = 0; i<quantidadeDePassageiros; i++){
+            printf("Passageiro %d - Nome: %s | cpf: %s | numero da passagem: %d | numero da poltrona: %d\n",
+                i+1, listaDePassageiros[i].nome, listaDePassageiros[i].cpf, listaDePassageiros[i].numeroPassagem, listaDePassageiros[i].numeroPoltrona);
+        }
+    }
+    else{
+        for(int i = 0; i<10; i++){
+            printf("Passageiro %d - Nome: %s | cpf: %s | numero da passagem: %d | numero da poltrona: %d\n",
+                i+1, listaDePassageiros[i].nome, listaDePassageiros[i].cpf, listaDePassageiros[i].numeroPassagem, listaDePassageiros[i].numeroPoltrona);
+        }
     }
     return 0;
 }
@@ -373,10 +381,26 @@ int cadastrarPassageiro(Passageiro *listaDePassageiros, int *quantidadeDePassage
     char input[200];
 
     printf("----- CADASTRO DE PASSAGEIROS -----\n");
-    printf("Digite o nome do passageiro: ");
-    getchar();
-    scanf("%[^\n]", listaDePassageiros[*quantidadeDePassageiros].nome);
-    getchar();
+    int nomeValido;
+    do{
+        nomeValido = 1;
+        printf("Digite o nome do passageiro: ");
+        getchar();
+        scanf("%[^\n]", input);
+        getchar();
+        for(int i=0; i<strlen(input); i++){
+            if(input[i] != ' '){
+                if(!(isalpha(input[i]))){
+                    printf("Nome invalido. Tente novamente.\n");
+                    nomeValido = 0;
+                    break;
+                }
+            }
+        }
+    }while(!(nomeValido));
+
+    strcpy(listaDePassageiros[*quantidadeDePassageiros].nome, input);
+
 
     int cpfValido;
     do {
