@@ -439,10 +439,6 @@ Retorno:
     int - 1 se o CPF é válido, 0 caso contrário.
 ****************************** */
 int validarCPF(const char *cpf) {
-    int i;
-    int digitos[11];
-    int soma = 0;
-
     if (strlen(cpf) != 14)
         return 0;
 
@@ -669,7 +665,7 @@ int excluirPassageiro(Passageiro listaDePassageiros[], int *quantidadeDePassagei
         listaDePassageiros[i] = listaDePassageiros[i + 1];
     }
 
-    if(indiceExcluir <= 9 && quantidadeDePassageiros > 10){
+    if(indiceExcluir <= 9 && *quantidadeDePassageiros > 10){
         printf("%s saiu da lista de espera e entrou para o voo!\n", listaDePassageiros[9].nome);
     }
     *quantidadeDePassageiros -= 1;
